@@ -9,8 +9,7 @@ var Eletronico = /** @class */ (function () {
         this.tipo = tipo;
     }
     Eletronico.prototype.valorTotal = function () {
-        this.preco = this.preco + this.preco * 0.1;
-        return this.preco;
+        return this.preco + 13 % this.preco;
     };
     Eletronico.prototype.comprar = function () {
         console.log("O ".concat(this.marca, " ").concat(this.nome, " custa R$").concat(this.preco));

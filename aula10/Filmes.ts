@@ -12,7 +12,7 @@ constructor(nome:string,preco:number,tipo:string){
 }
 
     valorTotal(): number { 
-    return this.preco * 0.3
+        return this.preco + 0.3%this.preco
     }
 
     comprar(): void {

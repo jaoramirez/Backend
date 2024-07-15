@@ -12,8 +12,7 @@ constructor(marca:string,nome:string,preco:number,tipo:string){
   this.tipo = tipo 
 }
     valorTotal(): number {
-
-        return this.preco * 0.1
+        return this.preco + 13%this.preco
     }
 
     comprar(): void {

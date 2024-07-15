@@ -9,8 +9,7 @@ var Alimento = /** @class */ (function () {
         this.tipo = tipo;
     }
     Alimento.prototype.valorTotal = function () {
-        this.preco = this.preco + this.preco * 0.5;
-        return this.preco;
+        return this.preco + 0.5 % this.preco;
     };
     Alimento.prototype.comprar = function () {
         console.log("O ".concat(this.nome, " custa R$").concat(this.preco));
