@@ -46,16 +46,6 @@ VALUES(1,'Renata Rost','1977-01-12',09876543221,'Feminino','R. Germano lang'),
       (10, 'Ana Beatriz', '1992-11-11', 67890123456, 'Feminino', 'R. das Acácias'),
       (11, 'Felipe Gomes', '1983-06-06', 78901234567, 'Masculino', 'R. do Cedro');
 
-    CREATE TABLE IF NOT EXISTS alugueis_carros (
-   CarroID INT,
-   FOREIGN KEY (CarroID) REFERENCES carros_aluguel(CarroID),
-   ClienteID INT,
-   FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
-   DataInicio DATE,
-   DateTermino DATE,
-   ValorTotalAluguel DECIMAL
-);
-
 
 CREATE TABLE IF NOT EXISTS alugueis_carros (
    CarroID INT,
@@ -108,17 +98,15 @@ INSERT INTO alugueis_carros (CarroID, ClienteID, DataInicio, DataTermino, ValorT
 
 
 
--- Aluguel de carro
-SELECT
-CarroID
-Marca
-CarroID AS TotalGasto
-FROM 
-carros_aluguel
-LEFT JOIN 
-alugueis_carros ON CarroID
-GROUP BY
-CarroID
-Marca
-ORDER BY
-TotalGasto
+SELECT Cliente.Nome, SUM(alugueis_carros.ValorTotalAluguel) AS Total_Pedidos
+FROM Cliente
+LEFT JOIN alugueis_carros ON Cliente.ClienteID = alugueis_carros.ClienteID
+GROUP BY Cliente.Nome
+
+
+
+SELECT carros_aluguel.CarroID, carros_aluguel.Marca, carros_aluguel.Modelo, COUNT(alugueis_carros.ValorTotalAluguel)
+FROM carros_aluguel
+LEFT JOIN alugueis_carros ON carros_aluguel.CarroID = alugueis_carros.CarroID
+GROUP BY carros_aluguel.Modelo
+ORDER BY COUNT(alugueis_carros.ValorTotalAluguel);
