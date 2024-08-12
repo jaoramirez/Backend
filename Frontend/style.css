@@ -1,0 +1,17 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: rgb(240, 240, 240);
+}
+hi, h2 {
+    color: rgb(3, 3, 3);
+}
+
+input{
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
